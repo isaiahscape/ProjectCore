@@ -4,6 +4,14 @@
  */
 package com.mycompany.pod.project;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+
 /**
  *
  * @author Reniel
@@ -94,21 +102,62 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userActionPerformed
 
+    /**
+     * @param evt
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String Username=user.getText();
-        String Password=password.getText();
-        if(Username.contains("cs") && Password.contains("cs") ) {
-            user.setText("")
-            password.setText("")
-            main ob=new main ();
-            ob.setVisible(true);
+        private Connection connection
+        
+                
+        public Connection getConnection() {
+            return connection;
+        }
+
+        public void UserDao() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
+        JOptionPane.
+        String url = "jdbc:mysql://localhost:80/admin";
+        String Username = "root";
+        String Password = "root";
+
+        connection = DriverManager.getConnection(url, Username, Password);
+         
+        }
+        
+        public ArrayList<User> selectAllusers(){
             
+            try {
+                PreparedStatement  ststement = connection.prepareStatement(sql: "SELECT * FROM admin");
+                ResultSet result = statement.executeQuery();
+                return UserMapper.getUserList(result);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return new ArrayList<User>();
+                
+            }
             
+        class UserMapper {
             
+                /**
+                 * @param result
+                 * @return
+                 * @throws SQLException
+                 */
+                static List<User> getUserList(ResultSet result) throws SQLException {
+                    final List<User> users = new ArrayList<->();
+                    while (result.next()){
+                        User user = new User();
+                        String columnLabel;
+                        user.user = result.getString(columnLabel: "Username");
+                        user.pass = result.getString(columnLabel: "Password");
+                        
+                        users.add(user);
+                    }
+                    return users;
+                }
         }
         else{
-            system.out.println("Wrong credentials, try again.")
+            System.out.println("Wrong credentials, try again.")
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -141,10 +190,8 @@ public class login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new login().setVisible(true);
         });
     }
 
