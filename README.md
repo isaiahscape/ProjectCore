@@ -1,2 +1,2 @@
-# Prefect of Discipline Monitoring System #
-An app made from Java, Inc. and Apache Netbeans IDE (Work in Progress)
+# Project Core - an application for Prefect of Discipline Monitoring System #
+An app made by Java, Inc. (Work in Progress)
