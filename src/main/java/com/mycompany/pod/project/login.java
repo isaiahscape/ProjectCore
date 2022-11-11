@@ -34,17 +34,17 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        pass = new javax.swing.JLabel();
         user = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnlogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Username");
+        username.setText("Username");
 
-        jLabel2.setText("Password");
+        pass.setText("Password");
 
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,10 +52,10 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnloginActionPerformed(evt);
             }
         });
 
@@ -68,15 +68,15 @@ public class login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(username)
+                            .addComponent(pass))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(user)
                             .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(153, 153, 153)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -84,14 +84,14 @@ public class login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(username)
                     .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(pass)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(jButton1)
+                .addComponent(btnlogin)
                 .addContainerGap(113, Short.MAX_VALUE))
         );
 
@@ -105,7 +105,7 @@ public class login extends javax.swing.JFrame {
     /**
      * @param evt
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
         private Connection connection
         
@@ -116,7 +116,7 @@ public class login extends javax.swing.JFrame {
 
         public void UserDao() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
         JOptionPane.
-        String url = "jdbc:mysql://localhost:80/admin";
+        String url = "jdbc:mysql://localhost:3306/admin";
         String Username = "root";
         String Password = "root";
 
@@ -127,12 +127,12 @@ public class login extends javax.swing.JFrame {
         public ArrayList<User> selectAllusers(){
             
             try {
-                PreparedStatement  ststement = connection.prepareStatement(sql: "SELECT * FROM admin");
+                String sql;
+                PreparedStatement = connection.prepareStatement("SELECT * FROM admin where username, ");
                 ResultSet result = statement.executeQuery();
                 return UserMapper.getUserList(result);
             } catch (SQLException e) {
-                e.printStackTrace();
-                return new ArrayList<User>();
+                return new ArrayList<>();
                 
             }
             
@@ -156,10 +156,11 @@ public class login extends javax.swing.JFrame {
                     return users;
                 }
         }
-        else{
-            System.out.println("Wrong credentials, try again.")
+        if{
+            System.out.println("Wrong credentials, try again.");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        return (null);
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,10 +197,11 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnlogin;
+    private javax.swing.JLabel pass;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField user;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
+}
 }
