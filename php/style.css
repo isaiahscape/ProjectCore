@@ -1,0 +1,48 @@
+body {
+    background: #236280;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+}
+*{
+    font-family: Calibri;
+    box-sizing: border-box;
+}
+form {
+    width: 500px;
+    border: 2px solid #ccc;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+button {
+    float: right;
+    background: #000000;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 8px;
+    margin: right 10px;
+    border: none;
+}
+input {
+    display: block;
+    border: 2px solid #ccc;
+    width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+    color: #000000;
+    border-radius: 12px;
+}
+label {
+    font-size: 18px;
+    padding: 10px;
+}
+button:hover{
+    opacity: 1;
+    color: #236280;
+}
