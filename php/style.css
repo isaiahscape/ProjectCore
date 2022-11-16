@@ -1,10 +1,15 @@
 body {
-    background: #236280;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    height: 100vh;
+	background: rgb(37, 133, 150);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	flex-direction: column;
 }
+* {
+    transition: all 1.0s ease-out;
+  }
+  
 *{
     font-family: Calibri;
     box-sizing: border-box;
@@ -45,4 +50,11 @@ label {
 button:hover{
     opacity: 1;
     color: #236280;
+}
+.error {
+    background: #f2dede;
+    color: #a94442;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
 }
